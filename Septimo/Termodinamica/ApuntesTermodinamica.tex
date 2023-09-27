@@ -1,0 +1,84 @@
+\documentclass[a4,11pt]{aleph-notas}
+% Se recomienda leer la documentación de esta
+% clase en https://www.alephsub0.org/recursos/
+
+% -- Paquetes adicionales
+\usepackage{aleph-comandos}
+\usepackage{enumitem}
+\usepackage{amssymb}
+
+
+% -- Datos de las notas
+\universidad{Universidad Nacional de Colombia}
+\autor{Angel Almonacid}
+\materia{Termodinámica}
+\nota{}
+\fecha{\today}
+
+\longtitulo{0.65\linewidth}
+\logouno[3.0cm]{Logos/LogoUnal}
+\logodos[2.0cm]{Logos/IconoFisica}
+
+
+% -- Comandos adicionales
+
+
+\begin{document}
+
+\encabezado
+
+\vspace*{-8mm}
+\section{Ciclos}
+
+\begin{advertencia}
+    Sabemos que para cada ciclo termodinámico se tiene que:
+
+    $$\Delta \mathbb{U}=0$$
+\end{advertencia}
+
+Recuerde el siguiente resultado.
+
+\begin{teo}
+    Sean $x\in \R$ y $y\in [-1,1]$. Se tiene que si
+    \[
+        y =\cos(x),
+    \]
+    entonces
+    \[
+        x = \arccos(y) + 2k\pi
+        \texto
+        x = -\arccos(y) + 2k\pi
+    \]
+    con $k\in\Z$.
+\end{teo}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Ejercicio 1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{ejer}
+    Resolver la ecuación
+    \[
+        1=4\cos\left(\frac{x}{3}\right).
+    \]
+\end{ejer}
+
+\begin{proof}[Solución]
+    Tomemos la ecuación y dividamos entre 4, obtenemos la expresión equivalente:
+    \[
+        \frac{1}{4}=\cos\left(\frac{x}{3}\right),
+    \]
+    con lo cual, las soluciones son
+    \begin{enumerate}[label=\textit{\alph*)}]
+        \item\label{ej01:c01} $\displaystyle \frac{x}{3}=\arccos\left(\frac{1}{4}\right)+2k\pi$, con $k\in\Z$; o
+        \item\label{ej01:c02} $\displaystyle \frac{x}{3}=-\arccos\left(\frac{1}{4}\right)+2k\pi$, con $k\in\Z$.
+    \end{enumerate}
+    Así, la solución de la ecuación es
+    \[
+        x=3\arccos\left(\frac{1}{4}\right)+6k\pi
+        \qquad\text{o}\qquad
+        x=-3\arccos\left(\frac{1}{4}\right)+6k\pi.\qedhere
+    \]
+\end{proof}
+
+
+\end{document}

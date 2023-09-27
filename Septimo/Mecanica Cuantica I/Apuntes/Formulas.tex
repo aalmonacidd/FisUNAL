@@ -1,0 +1,43 @@
+\documentclass[a4,12pt]{aleph-notas}
+% Se recomienda leer la documentación de esta
+% clase en https://www.alephsub0.org/recursos/
+
+% -- Paquetes adicionales
+\usepackage{aleph-comandos}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{ragged2e}
+
+% -- Datos de las notas
+\universidad{Universidad Nacional de Colombia}
+\autor{Angel Almonacid}
+\materia{Mécánica Cuántica}
+\nota{Fórmulas Relevantes}
+\fecha{\today}
+
+\longtitulo{0.65\linewidth}
+\logouno[3.0cm]{Logos/LogoUnal}
+\logodos[2.0cm]{Logos/IconoFisica}
+
+
+% -- Comandos adicionales
+
+
+\begin{document}
+
+\encabezado
+
+\section{Función de Onda}
+\begin{itemize}
+    \item Ecuación de Schrödinger: $i\hbar\frac{\partial}{\partial t} \psi=-\frac{\hbar^2}{2m}\nabla^2\psi$
+    \item Función de onda: $\psi(\vec{x},t)=\int e^{\frac{i}{\hbar}\left(\vec{p}\cdot\vec{x}-\frac{p^2}{2m}t\right)}\varphi(p)\frac{d^3 p}{(2 \pi \hbar)^3}$
+    \item Densidad de Probabilidad: $\rho(\vec{x},t)=\left\vert \psi(\vec{x},t) \right\vert^2$
+    \item Valor esperado de la posición: $\langle x\rangle=\int_{-\infty}^{\infty}\left\vert \psi \right\vert^2 x dx$
+    \item Desviación cuadrática media: $\left( \Delta x^2\right)=\langle(x-\langle x\rangle)^2 \rangle$
+    \section{Espacio de momentos}
+    \item Delta de Dirac: $\delta(\textbf{p}-a)=\frac{1}{(2\pi\hbar)^3}\int d^3x e^{\frac{i}{\hbar}\textbf{k} \cdot (\textbf{x}-a)}$
+    \item Transformación a espacio de momentos: $\psi(\textbf{x},t)=\int\frac{d^3p}{(2\pi\hbar)^3}\varphi(\textbf{p},t)e^{\frac{i}{\hbar}(\textbf{p}\cdot\textbf{x})}$
+    \item Transformación inversa a espacio de coordenadas: $\varphi(\textbf{p},t)=\int d^3x\psi(\textbf{x},t)e^{-\frac{i}{\hbar}(\textbf{p}\cdot\textbf{x})}$
+    \item Operador momento en el espacio de las coordenadas: $\textbf{p} \rightarrow \frac{h}{i}\nabla$
+\end{itemize}
+\end{document}

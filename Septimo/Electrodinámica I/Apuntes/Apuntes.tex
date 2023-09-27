@@ -1,0 +1,273 @@
+\documentclass[a4,12pt]{aleph-notas}
+% Se recomienda leer la documentación de esta
+% clase en https://www.alephsub0.org/recursos/
+
+% -- Paquetes adicionales
+\usepackage{aleph-comandos}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{ragged2e}
+\usepackage{multicol}
+
+% -- Datos de las notas
+\universidad{Universidad Nacional de Colombia}
+\autor{Angel Almonacid}
+\materia{Electrodinámica I}
+\nota{Apuntes}
+\fecha{\today}
+
+\longtitulo{0.65\linewidth}
+\logouno[3.0cm]{Logos/LogoUnal}
+\logodos[2.0cm]{Logos/IconoFisica}
+
+
+% -- Comandos adicionales
+
+
+\begin{document}
+
+\encabezado
+
+\section{Ecuación de Laplace}
+Para posibilitar el cálculo de de potenciales eléctricos, podemos tomar simetrías que permiten que las soluciones de estos potenciales sean no numéricos y relativamente sencillos. Tomemos el ejemplo de un anillo de carga, podemos calcular el potencial sobre el eje central del anillo pero para cualquier punto del espacio esto será muy complicado, a través de la simetría este cálculoo será sencillo; pero para poder usar estos resultados necesitamos conocer como relaciones la distribución de cargas en todo el espacio a través de la ecuaciones de Poisson y Laplace.
+\subsection{Ecuaciones de Poisson y Laplace}
+
+Podemos llegar a la ecuación de Laplace a través de la primera ley de Maxwell de la electróstatica
+
+\begin{align*}
+    \nabla \cdot \vec{\mathbf{E}}&= \frac{\rho}{\epsilon_0} && \vec{\mathbf{E}}=-\nabla\mathbf{V}
+\end{align*}
+$$\nabla \cdot ( -\nabla \mathbf{V} ) \rightarrow-\nabla\cdot\nabla\mathbf{V}\rightarrow -\nabla^2\mathbf{V}=\frac{\rho}{\epsilon_0}$$
+
+\begin{equation}\label{Poisson}
+    \nabla^2\mathbf{V}=-\frac{\rho}{\epsilon_0}
+\end{equation}
+
+Lo que es la ecuación de Poisson, definiendo el operador Laplaciano como
+
+\begin{equation}\label{Laplaciano}
+    \nabla^2=\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2}+\frac{\partial^2}{\partial z^2}
+\end{equation}
+
+Se establece una ecuación diferencial para el potencial eléctrico $\mathbf{V}$ en una región del espacio $\mathsf{V}$ delimitada por una superficie cerrada $\mathsf{S}$. Esta ecuación diferencial requiere condiciones iniciales que generalmente son condiciones de contorno para que las soluciones sean completamente determinadas. 
+¿Tanto la ecuación de Laplace y Poisson (siendo la primera un caso particular de la segunda) pueden tener una sola solución? Para responder estas preguntas requerimos de dos teoremas.
+
+\begin{teo}
+    Teorema 1: Si \(V_1, V_2, \ldots, V_n\) son soluciones linealmente independientes de la ecuación de Laplace (6.2), entonces la solución general es la suma de todas las soluciones, con coeficientes apropiados, es decir:
+
+\[V = a_1 V_1 + a_2 V_2 + \ldots + a_n V_n\]
+
+Donde \(a_1, a_2, \ldots, a_n\) son coeficientes apropiados que dependen de las condiciones de contorno y de los valores dados en la superficie del problema.
+
+\end{teo}
+
+\begin{teo}
+    Supongamos que \(V_a\) y \(V_b\) son dos soluciones generales de la ecuación de Poisson \ref{Poisson}:
+
+    \[
+    \nabla^2 V = -\frac{\rho}{\varepsilon_0}
+    \]
+    
+    Estas soluciones pueden expresarse, mediante el uso del principio de superposición, como:
+    
+    \[
+    \mathbf{V}_a=\sum_{i=1}^{n}a_n \mathbf{V_i}
+    \]
+    
+    de la misma manera para $V_b$ donde \(a\) y \(b\) son constantes arbitrarias.
+    
+    Si estas soluciones satisfacen las mismas condiciones de contorno en una misma región de volumen \(V\), delimitada por una superficie \(S\), entonces, necesariamente, \(V_a\) y \(V_b\) difieren, como máximo, por una constante numérica aditiva.
+    
+\end{teo}
+
+\textbf{Demostración:} Antes de comenzar la prueba del teorema, debemos definir los tres tipos de condiciones de contorno que un problema puede presentar. Cuando un problema establece condiciones de contorno que especifican solo el potencial eléctrico \(V\) en algunas superficies, tenemos condiciones de contorno de Dirichlet. Si la cantidad especificada en las condiciones de contorno es la componente del campo eléctrico normal a las superficies (\(E \cdot n\)) y no el potencial eléctrico, se llaman condiciones de contorno de Neumann. Dado que el campo eléctrico es el gradiente negativo del potencial, es común utilizar la notación \(-\nabla V \cdot n = \nabla^2 V \cdot n = -\frac{\partial V}{\partial n} = -\sigma n\) para indicar este tipo de condición. Por último, si las condiciones de contorno se establecen en términos de \(V\) en algunas superficies y mediante \(\frac{\partial V}{\partial n}\) en otras, se llaman condiciones de contorno mixtas o de Cauchy. Nos centraremos principalmente en problemas que involucran condiciones de contorno de Dirichlet y de Neumann, ya que son más simples que los que involucran condiciones de contorno de Cauchy.
+
+Volviendo a la demostración, supongamos que tenemos dos soluciones generales \(V_a\) y \(V_b\), ambas satisfaciendo la ecuación de Poisson y las mismas condiciones de contorno en una región de volumen \(V\) delimitada por una superficie \(S\). Definiendo una nueva solución \(Y\) como:
+
+\[Y = V_a - V_b\]
+
+Vemos que:
+
+\[
+\nabla^2 Y = \nabla^2 V_a - \nabla^2 V_b = -\frac{\rho}{\varepsilon_0} - \frac{\rho}{\varepsilon_0} = 0
+\]
+
+Y satisface la ecuación de Laplace dentro de \(V\). En esta región, independientemente de si las condiciones de contorno para \(V_a\) o \(V_b\) son condiciones de Dirichlet, Neumann o Cauchy, se reducen a \(\nabla Y \cdot n = 0\) en el caso de condiciones de Dirichlet, \(\frac{\partial Y}{\partial n} = 0\) en el caso de condiciones de Neumann, o una combinación de ambas si son condiciones de Cauchy.
+Si las condiciones de contorno son de Dirichlet, entonces sobre las superficies tenemos \(V = 0\). Dado que \(V\) es una constante en toda la región \(V\), como se demostró anteriormente, en toda la región \(V\) debemos tener \(V = 0\). Y como \(V = V_a - V_b\), esto significa que \(V_a = V_b\), lo que implica que la solución es única.
+
+Cuando las condiciones de contorno son de Neumann, sobre las superficies tenemos \(\nabla V \cdot \mathbf{n} = 0\), lo que concuerda con el hecho de que \(V\) es una constante en \(V\) y, por lo tanto, su gradiente es nulo. En este caso, tenemos \(V = V_0\), y como \(V = V_a - V_b\), encontramos que \(V_a = V_b + V_0\), es decir, las soluciones difieren por una constante aditiva. Sin embargo, dado que el potencial eléctrico depende de un potencial de referencia que se establece, solo las diferencias de potencial tienen sentido físico, de la misma manera que solo las diferencias de energía son importantes.
+
+\begin{equation}
+    \left( \Delta x^2\right)=\langle(x-\langle x\rangle)^2 \rangle
+ \end{equation}
+\section{Espacio de momentos}
+
+Vamos a realizar la transformación al espacio de momentos a través de la transformada de Fourier, así podemos definir la siguiente transformación:
+
+\begin{align*}
+    \left\vert \psi (\vec{x},t)\right\vert^2 d^3x \longrightarrow \mathbf{W} (\vec{p},t)d^3p && \int_{V} \mathbf{W}(\vec{p},t)d^3p=1
+\end{align*}
+
+La relación de transformación a través de la transformada integral de Fourier se define de la siguiente forma
+\begin{equation}\label{TFourier}
+    \psi(\textbf{x},t)=\int\frac{d^3p}{(2\pi\hbar)^3}\varphi(\textbf{p},t)e^{\frac{i}{\hbar}(\textbf{p}\cdot\textbf{x})}
+\end{equation}
+
+Siendo $\varphi(\textbf{p},t)$ la transformada de Fourier de la función $\psi(\textbf{x},t)$. Para encontrar $\varphi$ debemos hallar la función inversa de Fourier, multiplicaremos por $e^{-\frac{i}{\hbar}p'x}$ e integraremos con respecto a x \\ \\ \\
+\begin{align*}
+    \int d^3x \psi(\textbf{x},t)e^{-\frac{i}{\hbar}\textbf{p}'-\textbf{x}}=\int d^3p\varphi(\textbf{p},t) \frac{1}{(2\pi\hbar)^3}\int d^3x e^{\frac{i}{\hbar}(\textbf{p}-\textbf{p}')\cdot \textbf{x}}=\int d^3p \varphi(\textbf{p},t) \delta(\textbf{p}-\textbf{p}')=\varphi(\textbf{p}',t)
+\end{align*}
+Obtenemos como resultado la siguiente relación de transformación inversa, identificando la delta de Dirac dentro del termino de la integral con respecto a p
+\begin{equation}\label{IFourier}
+    \varphi(\textbf{p},t)=\int d^3x\psi(\textbf{x},t)e^{-\frac{i}{\hbar}(\textbf{p}\cdot\textbf{x})}
+\end{equation}
+
+\subsection{Densidad de probabilidad en el espacio de momentos}
+Usaremos el mismo método para calcular la función de onda en el espacio de momento para calcular la densidad de probabilidad en este mismo espacio
+\begin{align*}
+\left\vert \psi(\textbf{x})\right\vert^2&=\int \frac{d^3 p}{(2 \pi \hbar)^3}\int \frac{d^3 p'}{(2 \pi \hbar)^3} \varphi(\textbf{p},t)\varphi^{\ast}(\textbf{p}',t) e^{\frac{i}{\hbar}(\textbf{p}-\textbf{p}')\cdot \textbf{x}}\\
+\int \left\vert \psi(\textbf{x})\right\vert^2 d^3 x &= \int \frac{d^3 p}{(2 \pi \hbar)^3}\int \frac{d^3 p'}{(2 \pi \hbar)^3} \varphi(\textbf{p},t)\varphi^{\ast}(\textbf{p}',t)\int e^{\frac{i}{\hbar}(\textbf{p}-\textbf{p}')\cdot x} d^3 x\\
+&=\int \frac{d^3 p}{(2 \pi\hbar)^3}\left\vert\varphi(\textbf{p}',t)\right\vert^2
+\end{align*}
+
+Así podemos identificar la densidad de probabilidad transformada al espacio de momentos como 
+
+\begin{equation}
+    \mathbf{W}(\textbf{p},t)=\frac{\left\vert\varphi(\textbf{p},t)\right\vert^2}{(2\pi\hbar)^3}
+\end{equation}
+
+Y definir valores esperados y desviaciones cuadráticas medias de la misma manera que en el espacio de coordenadas
+
+\begin{align*}
+    \langle \textbf{p} \rangle &= \int \frac{d^3p}{(2\pi\hbar)^3} \left\vert \varphi(\textbf{p},t) \right\vert^2 \textbf{p} \\
+    (\Delta\textbf{p})^2 &=\langle(p-\langle p\rangle)^2\rangle=\int dp \mathbf{W}(p,t)(p-p_0)^2\\
+\end{align*}
+
+\subsubsection{Valor esperado del momento}
+\begin{align*}
+    \langle \textbf{p} \rangle &= \int \frac{d^3 p}{(2\pi\hbar)^3} \varphi(p,t)p\varphi(p,t)*= \int\int\int \frac{d^3p}{(2\pi\hbar)}d^3xd^3x'e^{\frac{i}{\hbar}p\cdot x'}\psi(x',t)*pe^{-\frac{i}{\hbar}p\cdot x}\psi(x,t)\\
+    &=\int\int\int \frac{d^3p}{(2\pi\hbar)^3}d^3x d^3x'e^{\frac{i}{\hbar}p\cdot x'}\psi(x',t)*(-\frac{\hbar}{i}\nabla e^{-\frac{i}{\hbar}p\cdot x})\psi(x,t)\\
+    &=\int\int d^3xd^3x'\psi(x',t)*(\frac{h}{i}\psi(x,t))\int \frac{d^3p}{(2\pi\hbar)^3}e^{\frac{i}{\hbar}p\cdot(x'-x)}
+    \langle \textbf{p} \rangle &=\int d^3x \psi(x,t)*(\frac{h}{i}\nabla\psi(x,t))=\int d^3x\psi(x,t) p
+\end{align*}
+
+Así identificamos al operador momento en el espacio de las coordenadas
+\begin{equation}
+    p\rightarrow \frac{\hbar}{i}\nabla
+\end{equation}
+
+\section{Notación de Dirac y espacios de Hilbert}
+\subsubsection{Bras, kets, operadores y producto escalar}
+\textbf{Notación:} Vector en un espacio vectorial complejo de dimensión n:
+\begin{multicols}{2}
+    \begin{equation*}
+        \vert \nu \rangle \rightarrow \begin{pmatrix}
+            \nu_1\\ \nu_2\\ .\\.\\.\\\nu_N
+        \end{pmatrix}
+    \end{equation*}
+    Las componentes $\nu_i$ son números complejos y la dimensión N del sistema depende de la naturaleza del sistema. $\vert \nu \rangle $ define el estado de un sistema.
+\end{multicols}
+
+La dimensión del espacio está relacionada con los estados que puede elegir el sistema. Si el estado se describe por una cantidad continua la dimensión del espacio es infinita.
+
+\subsubsection{Álgebra.} Las peraciones suma y multiplicación por escalar son cerradas.
+\begin{align*}
+    \vert \nu \rangle+ \vert u \rangle = \vert w \rangle,  \ \alpha\vert\nu\rangle=\vert\nu\rangle\alpha=\vert w \rangle, \ 0\vert v \rangle = \vert 0 \rangle.
+\end{align*}
+\begin{advertencia}
+    Los vectores $\vert v \rangle$ y $\alpha \vert v \rangle$ representan un mismo estado.
+\end{advertencia}
+
+\subsubsection{Observables y Operadores}
+Un observable se puede representar por un operador que actúa en el espacio vectorial. Para un ket, el operador actúa por la izquierda y el resultado de su operación es otro ket.\\
+
+
+\textbf{Operador A} $\mathbf{A} \vert v \rangle=\vert w \rangle$\\
+Eigenket (autovector) y autovalores de un operador 
+
+\begin{align*}
+    A \vert \lambda \rangle = \lambda \vert \lambda \rangle, \ A\vert\lambda_i\rangle= \lambda_i\vert\lambda_i\rangle. \ \lambda_i \in \mathbb{C}.
+\end{align*}
+
+\begin{center}
+    $\{ \lambda_i\} \rightarrow$ Conjunto de autovalores del operador A. 
+\end{center}
+
+Cualquier ket del espacio de estados de un sistema puede expresarse como una combinación de autovectores independientes (asociados a sus respectivos autovalores {$\lambda_i$}) de la forma\\
+
+$\vert \alpha \rangle = \sum_{i=1}^{N} c_i \vert \lambda_i \rangle$, con $A \vert\lambda_i\rangle=\lambda_i\vert\lambda_i\rangle$ y $c_i \in \mathbb{C}$
+
+
+\vspace*{-8mm}
+\section{Dinámica de Ecuación de Schrodinger}
+
+% \begin{advertencia}
+%     Suponemos conocidas las propiedades de la función 
+%     \[
+%         \func{\cos}{\R}{\R}
+%         \texty
+%         \func{\arccos}{[-1,1]}{\R}.
+%     \]
+% \end{advertencia}
+
+\begin{align*}
+    &\mid \alpha \rangle = \mathcal{U}(t,t_0) \mid \alpha,t_0 \rangle\\
+    &i \bar{h}\frac{\partial}{\partial t} \mathcal{U}(t,t_0) =H\mathcal{U}(t,t_0) \rightarrow i \bar{h} \frac{\partial}{\partial t}\psi
+\end{align*}
+
+$\{ \lambda_1, \lambda_2 \}$ siendo los autovalores de las formas cuadráticas $\mathbb{G}$ y $\mathbb{B}$
+
+\begin{lem}$\lambda_1 \neq \lambda_2$ Si las direcciones principales son ortogonales.\\
+    \large{\textbf{Prueba}}\\
+    Buscamos, lo siguiente:
+    \begin{align*}
+        \langle \xi_1, \xi_2 \rangle=g_{ij}\xi_1 \xi_2=0
+    \end{align*}
+
+\end{lem}
+
+
+\begin{teo}
+    Sean $x\in \R$ y $y\in [-1,1]$. Se tiene que si
+    \[
+        y =\cos(x),
+    \]
+    entonces
+    \[
+        x = \arccos(y) + 2k\pi
+        \texto
+        x = -\arccos(y) + 2k\pi
+    \]
+    con $k\in\Z$.
+\end{teo}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Ejercicio 1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{ejer}
+    Resolver la ecuación
+    \[
+        1=4\cos\left(\frac{x}{3}\right).
+    \]
+\end{ejer}
+
+\begin{proof}[Solución]
+    Tomemos la ecuación y dividamos entre 4, obtenemos la expresión equivalente:
+    \[
+        \frac{1}{4}=\cos\left(\frac{x}{3}\right),
+    \]
+    con lo cual, las soluciones son
+    \begin{enumerate}[label=\textit{\alph*)}]
+        \item\label{ej01:c01} $\displaystyle \frac{x}{3}=\arccos\left(\frac{1}{4}\right)+2k\pi$, con $k\in\Z$; o
+        \item\label{ej01:c02} $\displaystyle \frac{x}{3}=-\arccos\left(\frac{1}{4}\right)+2k\pi$, con $k\in\Z$.
+    \end{enumerate}
+    Así, la solución de la ecuación es
+    \[
+        x=3\arccos\left(\frac{1}{4}\right)+6k\pi
+        \qquad\text{o}\qquad
+        x=-3\arccos\left(\frac{1}{4}\right)+6k\pi.\qedhere
+    \]
+\end{proof}
+
+
+\end{document}
