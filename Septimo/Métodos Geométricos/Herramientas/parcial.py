@@ -49,3 +49,4 @@ chi=-(rt.dot_product(rtt.cross_product(rttt)))/(norma(rt.cross_product(rtt)))**2
 c=chi.full_simplify().trig_expand()
 print(c)
 print(latex(c))
+
