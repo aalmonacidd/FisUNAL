@@ -1,6 +1,7 @@
 from sage.all import *
 
-p,z=var('p','z')
-s=solve((sec((p+z)/2))**4+(sec((p-z)/2))**4,p)
-l=latex(s)
-print(l)
+x,y,z,r,o,x_,y_,z_,r_,o_,t=var('x,y,z,r,o,x_,y_,z_,r_,o_,t')
+r=(1/sqrt(x^2+y^2)*vector([x,y,0])
+print(r)
+
+

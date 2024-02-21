@@ -1,0 +1,11 @@
+# Fdb version 4
+["pdflatex"] 1695240134 "fuentes.tex" "fuentes.pdf" "fuentes" 1695240134 2
+  "/usr/share/texmf-dist/web2c/texmf.cnf" 1689853683 40684 9b9ec0b4288972636ff6a3b9c4238efc ""
+  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1694990619 8204236 329666ce4b8f938f2365ef3d3bddf1ca ""
+  "fuentes.aux" 1695237936 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "fuentes.tex" 1695240133 3457 37cb7a6f70d145c7268148d05edd79c9 ""
+  (generated)
+  "fuentes.aux"
+  "fuentes.log"
+  "fuentes.pdf"
+  (rewritten before read)
